@@ -107,6 +107,7 @@ export const Form = () => {
             <button
               className={styles.button__send}
               type="submit"
+              style={{background: "#2980B9"}}
             >
               SEND
             </button>

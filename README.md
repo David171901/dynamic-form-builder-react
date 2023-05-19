@@ -1,3 +1,24 @@
+# Dynamic Form Component using JSON and Formik
+
+## Description
+This custom React component is designed to provide additional functionality to our application by offering a dynamic form creation feature. It utilizes a JSON object as the initial value and leverages the Formik library for form management.
+
+## Features
+
+- **Dynamic Form Generation:** The component dynamically generates a form based on the provided JSON object, allowing for flexible and customizable forms.
+
+- **Form Validation:** It supports form validation using Formik's validation schema, ensuring data integrity and error handling.
+
+- **Form Submission:** The component handles form submission and provides an interface to perform actions or send data to a server.
+
+## Installation
+To use this dynamic form component in your React project, follow these steps:
+
+1. Install the package via npm or yarn by running the following command:
+
+npm install dynamic-form-builder-react
+
+## Example
 ```
 
 import { DynamicFormContainer, Form } from '../.';
@@ -5,7 +26,7 @@ import { InputProps } from '../dist/interfaces/interfaces';
 
 const App = () => {
 
-  const forms : { [x: string]: InputProps[] } = {
+  const forms: { [x: string]: InputProps[] } = {
     login: [
       {
         type: "text",
@@ -15,32 +36,8 @@ const App = () => {
         value: "",
         validations: [
           {
-            type: "minLength",
-            value: 3,
-            message: "Min. 3 characters",
-          },
-          {
-            type: "maxLength",
-            value: 15,
-            message: "Max. 15 characters",
-          },
-          {
             type: "required",
             message: "Full Name is required",
-          },
-        ],
-      },
-      {
-        type: "textarea",
-        name: "description",
-        label: "Description",
-        value: "",
-        placeholder:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
-        validations: [
-          {
-            type: "required",
-            message: "Description is required",
           },
         ],
       },
@@ -62,148 +59,18 @@ const App = () => {
         ],
       },
       {
-        type: "select",
-        name: "rol",
-        label: "Select an option: ",
+        type: "password",
+        name: "password",
+        label: "Password",
+        placeholder: "*******",
         value: "",
-        options: [
-          {
-            value: "admin",
-            desc: "Admin",
-          },
-          {
-            value: "user",
-            desc: "User",
-          },
-          {
-            value: "super-admin",
-            desc: "Super Admin",
-          },
-        ],
         validations: [
           {
             type: "required",
-            message: "Rol is required",
+            message: "Password is required",
           },
         ],
       },
-      {
-        type: "radio-group",
-        name: "gender",
-        label: "Gender: ",
-        value: "man",
-        options: [
-          {
-            value: "man",
-            desc: "Man",
-          },
-          {
-            value: "woman",
-            desc: "Woman",
-          },
-          {
-            value: "other",
-            desc: "Other",
-          },
-        ],
-        validations: [
-          {
-            type: "required",
-            message: "Gender is required",
-          },
-        ],
-      },
-        {
-          type: "checkbox-group",
-          name: "numbers",
-          label: "Numbers: ",
-          value: [],
-          typeValue: "array",
-          options: [
-            {
-              value: "one",
-              desc: "One",
-            },
-            {
-              value: "two",
-              desc: "Two",
-            },
-            {
-              value: "three",
-              desc: "Three",
-            },
-            {
-              value: "four",
-              desc: "Four",
-            },
-          ],
-          validations: [
-            {
-              type: "minLength",
-              value: 2,
-              message: "Select at least two options",
-            },
-          ],
-        },
-        {
-          type: "password",
-          name: "password",
-          label: "Password",
-          placeholder: "Password",
-          value: "",
-          validations: [
-            {
-              type: "required",
-              message: "Password is required",
-            },
-          ],
-        },
-        {
-          type: "checkbox",
-          name: "terms",
-          typeValue: "boolean",
-          label: "Terms and Conditions",
-          value: false,
-          validations: [
-            {
-              type: "isTrue",
-              message: "Accept the terms!",
-            },
-          ],
-        },
-        {
-          type: "field-array",
-          name: "items",
-          typeValue: "array",
-          label: "Items",
-          value: [
-            {
-              title: "",
-              desc: "",
-            },
-          ],
-          validations: [],
-          fields: [
-            {
-              type: "text",
-              name: "title",
-              label: "Title",
-              placeholder: "Title",
-            },
-            {
-              type: "text",
-              name: "desc",
-              label: "Description",
-              placeholder: "Description",
-            },
-            {
-              type: "text",
-              name: "users",
-              label: "Users",
-              placeholder: "Username",
-            },
-          ],
-        },
     ],
   };
 
@@ -211,7 +78,7 @@ const App = () => {
     <>
       <DynamicFormContainer
         formSchema={forms}
-        formTitle={"Formulario"}
+        formTitle={"Form"}
       >
         {(values) => (
           <>
@@ -225,3 +92,15 @@ const App = () => {
 };
 
 ```
+
+
+## Props
+1. formSchema (object): The initial form values represented as a JSON object.
+2. formTitle (string) 
+3. className (string) [optional]
+4. initialformdata (object) [optional]
+5. onSubmit (function) [optional]
+
+action (function): A callback function invoked when the form is submitted. It receives the form values as an argument.
+className (string)
+title (string)
