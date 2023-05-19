@@ -1,22 +1,13 @@
-# Dynamic Form Component using JSON and Formik
+# DynamicFormContainer
 
 ## Description
-This custom React component is designed to provide additional functionality to our application by offering a dynamic form creation feature. It utilizes a JSON object as the initial value and leverages the Formik library for form management.
-
-## Features
-
-- **Dynamic Form Generation:** The component dynamically generates a form based on the provided JSON object, allowing for flexible and customizable forms.
-
-- **Form Validation:** It supports form validation using Formik's validation schema, ensuring data integrity and error handling.
-
-- **Form Submission:** The component handles form submission and provides an interface to perform actions or send data to a server.
+The DynamicFormContainer component is a container for dynamic forms that allows rendering and handling different forms with custom input fields. Below is the documentation for this component:
 
 ## Installation
-To use this dynamic form component in your React project, follow these steps:
 
-1. Install the package via npm or yarn by running the following command:
-
-npm install dynamic-form-builder-react
+```
+npm i d-dynamic-form-builder-react
+```
 
 ## Example
 ```
@@ -83,7 +74,6 @@ const App = () => {
         {(values) => (
           <>
             <Form />
-            {JSON.stringify(values)}
           </>
         )}
       </DynamicFormContainer>
@@ -93,14 +83,33 @@ const App = () => {
 
 ```
 
-
 ## Props
-1. formSchema (object): The initial form values represented as a JSON object.
-2. formTitle (string) 
-3. className (string) [optional]
-4. initialformdata (object) [optional]
-5. onSubmit (function) [optional]
 
-action (function): A callback function invoked when the form is submitted. It receives the form values as an argument.
-className (string)
-title (string)
+1. <strong>formSchema (object)</strong><i>[required]</i>: An object that defines the structure of the form. Each property of the object represents a form, and its value is an array of InputProps objects that describe the input fields of the form.
+2. <strong>formTitle (string)</strong><i>[required]</i>: The title of the form.
+3. <strong>className (string)</strong><i>[optional]</i>
+4. <strong>initialformdata (object)</strong><i>[optional]</i>
+5. <strong>onSubmit (function)</strong><i>[optional]</i>
+
+### formSchema (object)
+
+| Property      | Type                                                              | Description                                                                                                              |
+| ------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| type          | "text" \| "textarea" \| "email" \| "password" \| "radio-group" \| "select" \| "checkbox" \| "checkbox-group" \| "field-array" | The type of the input field.                                                                                             |
+| name          | string                                                            | The name of the input field.                                                                                             |
+| value         | string \| number \| boolean \| string[] \| DefaultJSON[]          | The value of the input field.                                                                                            |
+| validations   | Validation[]                                                      | An array of validation rules for the input field.                                                                        |
+| placeholder?  | string                                                            | (Optional) The placeholder text for the input field.                                                                     |
+| typeValue?    | "string" \| "boolean" \| "array"                                  | (Optional) The type of the value property.                                                                               |
+| label?        | string                                                            | (Optional) The label for the input field.                                                                                |
+| options?      | Opt[]                                                             | (Optional) An array of options for select or radio-group input fields.                                                    |
+| fields?       | Fields[]                                                          | (Optional) An array of fields for field-array input type. Each field is of type `Fields` which has properties similar to `InputProps`. |
+
+
+
+| Interface | Properties | Description |
+| --- | --- | --- |
+| Opt | - `value`: string \| number<br>- `desc`: string | Represents an option.<br>- `value`: The value of the option.<br>- `desc`: The description of the option. |
+| Fields | - `type`: "text"<br>- `name`: string<br>- `label`: string<br>- `placeholder?`: string | Represents a field.<br>- `type`: The type of the field.<br>- `name`: The name of the field.<br>- `label`: The label of the field.<br>- `placeholder?`: (Optional) The placeholder text for the field. |
+| Validation | - `type`: "required" \| "isEmail" \| "minLength" \| "isTrue" \| "maxLength" \| "matches"<br>- `value?`: string \| number \| boolean \| RegExp<br>- `message`: string | Represents a validation rule for a field.<br>- `type`: The type of validation.<br>- `value?`: (Optional) The value for the validation.<br>- `message`: The validation error message. |
+| DefaultJSON | `{ [key: string]: any }` | Represents a JSON object with any value types for its properties. |

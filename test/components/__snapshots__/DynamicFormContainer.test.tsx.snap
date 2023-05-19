@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DynamicFormContainer Component 1`] = `
+<div>
+  <h2
+    className="text-2xl font-medium"
+  >
+    Form
+  </h2>
+  <form
+    action="#"
+    noValidate={true}
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        className="field__label"
+      >
+        Full Name
+      </label>
+      <input
+        className="field__input"
+        name="name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Full Name"
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        className="field__label"
+      >
+        E-mail
+      </label>
+      <input
+        className="field__input"
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="E-mail"
+        type="email"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        className="field__label"
+      >
+        Password
+      </label>
+      <input
+        className="field__input"
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="*******"
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="button__send"
+      style={
+        Object {
+          "background": "#2980B9",
+        }
+      }
+      type="submit"
+    >
+      SEND
+    </button>
+  </form>
+</div>
+`;

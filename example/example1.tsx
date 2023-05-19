@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { DynamicFormContainer, Form } from '../.';
 import { InputProps } from '../dist/interfaces/interfaces';
 
-const App = () => {
+const Example1 = () => {
 
   const forms: { [x: string]: InputProps[] } = {
     login: [
@@ -70,4 +70,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Example1 />, document.getElementById('root'));
