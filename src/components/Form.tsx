@@ -1,29 +1,40 @@
-import React from 'react'
-import { Form as FormFormik, Formik } from "formik"
-import { getInputs } from "../utils"
-import { FormContext } from "./DynamicFormContainer"
-import { useContext } from "react"
-import styles from '../styles/styles.module.css'
-import { Layout } from './Layout'
-import { CustomSelect } from './CustomSelect'
-import { CustomRadioGroup } from './CustomRadioGroup'
-import { CustomCheckboxGroup } from './CustomCheckboxGroup'
-import { CustomCheckBox } from './CustomCheckBox'
-import { CustomFieldArrays } from './CustomFieldArrays'
-import { CustomTextarea } from './CustomTextarea'
-import { CustomTextInput } from './CustomInput'
+import React from 'react';
+import { Form as FormFormik, Formik } from 'formik';
+import { getInputs } from '../utils';
+import { FormContext } from './DynamicFormContainer';
+import { useContext } from 'react';
+import styles from '../styles/styles.module.css';
+import { Layout } from './Layout';
+import { CustomSelect } from './CustomSelect';
+import { CustomRadioGroup } from './CustomRadioGroup';
+import { CustomCheckboxGroup } from './CustomCheckboxGroup';
+import { CustomCheckBox } from './CustomCheckBox';
+import { CustomFieldArrays } from './CustomFieldArrays';
+import { CustomTextarea } from './CustomTextarea';
+import { CustomTextInput } from './CustomInput';
+import { CustomLabel } from './CustomLabel';
 
 export const Form = () => {
-
-  const { formSchema, setvalues, formTitle, className, onSubmit: callback, initialformdata } = useContext(FormContext)
-  const { initialValues, inputs, validationSchema } = getInputs("login", formSchema, initialformdata);
+  const {
+    formSchema,
+    setvalues,
+    formTitle,
+    className,
+    onSubmit: callback,
+    initialformdata,
+  } = useContext(FormContext);
+  const { initialValues, inputs, validationSchema } = getInputs(
+    'login',
+    formSchema,
+    initialformdata
+  );
 
   return (
     <Layout title={formTitle} className={className}>
       <Formik
         {...{ initialValues, validationSchema }}
-        onSubmit={(values) => {
-          if(callback) callback(values)
+        onSubmit={values => {
+          if (callback) callback(values);
           setvalues(values);
         }}
       >
@@ -31,7 +42,7 @@ export const Form = () => {
           <FormFormik noValidate>
             {inputs.map(({ name, type, ...props }) => {
               switch (type) {
-                case "select":
+                case 'select':
                   return (
                     <CustomSelect
                       key={name}
@@ -41,7 +52,7 @@ export const Form = () => {
                     />
                   );
 
-                case "radio-group":
+                case 'radio-group':
                   return (
                     <CustomRadioGroup
                       label={props.label!}
@@ -51,7 +62,7 @@ export const Form = () => {
                     />
                   );
 
-                case "checkbox-group":
+                case 'checkbox-group':
                   return (
                     <CustomCheckboxGroup
                       label={props.label!}
@@ -61,7 +72,7 @@ export const Form = () => {
                     />
                   );
 
-                case "checkbox":
+                case 'checkbox':
                   return (
                     <CustomCheckBox
                       label={props.label!}
@@ -70,7 +81,7 @@ export const Form = () => {
                     />
                   );
 
-                case "field-array":
+                case 'field-array':
                   return (
                     <CustomFieldArrays
                       label={props.label!}
@@ -81,13 +92,28 @@ export const Form = () => {
                     />
                   );
 
-                case "textarea":
+                case 'textarea':
                   return (
                     <CustomTextarea
                       label={props.label!}
                       key={name}
                       name={name}
                       placeholder={props.placeholder}
+                      type={type}
+                    />
+                  );
+
+                case 'h1':
+                case 'h2':
+                case 'h3':
+                case 'h4':
+                case 'h5':
+                case 'h6':
+                  return (
+                    <CustomLabel
+                      label={props.label!}
+                      key={name}
+                      name={name}
                       type={type}
                     />
                   );
@@ -107,7 +133,7 @@ export const Form = () => {
             <button
               className={styles.button__send}
               type="submit"
-              style={{background: "#2980B9"}}
+              style={{ background: '#2980B9' }}
             >
               SEND
             </button>

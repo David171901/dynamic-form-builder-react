@@ -1,4 +1,5 @@
 export * from './CustomInput'
+export * from './CustomLabel'
 export * from './CustomTextarea'
 export * from './CustomSelect'
 export * from './CustomCheckBox'

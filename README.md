@@ -106,6 +106,9 @@ const App = () => {
 | fields?       | Fields[]                                                          | (Optional) An array of fields for field-array input type. Each field is of type `Fields` which has properties similar to `InputProps`. |
 
 
+<br>
+<br>
+
 
 | Interface | Properties | Description |
 | --- | --- | --- |
@@ -113,3 +116,5 @@ const App = () => {
 | Fields | - `type`: "text"<br>- `name`: string<br>- `label`: string<br>- `placeholder?`: string | Represents a field.<br>- `type`: The type of the field.<br>- `name`: The name of the field.<br>- `label`: The label of the field.<br>- `placeholder?`: (Optional) The placeholder text for the field. |
 | Validation | - `type`: "required" \| "isEmail" \| "minLength" \| "isTrue" \| "maxLength" \| "matches"<br>- `value?`: string \| number \| boolean \| RegExp<br>- `message`: string | Represents a validation rule for a field.<br>- `type`: The type of validation.<br>- `value?`: (Optional) The value for the validation.<br>- `message`: The validation error message. |
 | DefaultJSON | `{ [key: string]: any }` | Represents a JSON object with any value types for its properties. |
+
+<br>
