@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -34,7 +34,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "dynamic-form-builder-react",
+  "name": "d-dynamic-form-builder-react",
   "author": "david.pino",
   "module": "dist/dynamic-form-builder-react.esm.js",
   "size-limit": [
