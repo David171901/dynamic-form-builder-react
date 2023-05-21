@@ -28,7 +28,7 @@ type YupArray = Yup.ArraySchema<
 >;
 
 const generateValidations = (field: InputProps) => {
-  let schema: YupBoolean | YupString | YupArray =
+  let schema: YupBoolean | YupString | YupArray  =
     Yup[field.typeValue ? field.typeValue : "string"]();
   for (const rule of field.validations) {
     switch (rule.type) {
@@ -38,6 +38,9 @@ const generateValidations = (field: InputProps) => {
       case "isEmail":
         schema = (schema as YupString).email(rule.message);
         break;
+      case "isUrl":
+        schema = (schema as YupString).url(rule.message);
+        break;
       case "minLength":
         schema = (schema as YupString | YupArray).min(
           rule?.value as number,
@@ -45,7 +48,7 @@ const generateValidations = (field: InputProps) => {
         );
         break;
       case "maxLength":
-        schema = (schema as YupString).max(rule.value as number, rule.message);
+        schema = (schema as YupString | YupArray).max(rule.value as number, rule.message);
         break;
       case "matches":
         schema = (schema as YupString).matches(

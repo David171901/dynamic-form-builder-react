@@ -48,6 +48,7 @@ export interface Validation {
     | "isTrue"
     | "maxLength"
     | "matches"
+    | "isUrl"
   value?: string | number | boolean | RegExp
   message: string
 }
