@@ -90,13 +90,13 @@
 .container__fields_array {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem; /* Equivalente a 'gap-y-2' */ 
+    gap: 0.5rem; 
 }
 
 @media (min-width: 768px) {
     .container__fields_array {
       flex-direction: row;
-      gap: 1rem; /* Equivalente a 'gap-x-4' */
+      gap: 1rem; 
     }
 }
 
@@ -116,7 +116,7 @@
 
 .field_array__input:focus {
     border-color: #2980B9;
-    box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.5); /* Equivalente a 'focus:shadow-md' */
+    box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.5); 
 }
 
 .container__button_remove {

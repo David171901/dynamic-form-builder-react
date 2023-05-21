@@ -1,7 +1,7 @@
-import * as Yup from "yup";
-import { AnyObject, Maybe } from "yup/lib/types";
-import { TypeOfShape } from "yup/lib/object";
-import { DefaultJSON, InputProps } from "../interfaces/interfaces";
+import * as Yup from 'yup';
+import { AnyObject, Maybe } from 'yup/lib/types';
+import { TypeOfShape } from 'yup/lib/object';
+import { DefaultJSON, InputProps } from '../interfaces/interfaces';
 
 type YupBoolean = Yup.BooleanSchema<
   boolean | undefined,
@@ -19,11 +19,17 @@ type YupArray = Yup.ArraySchema<
     myNumber: Yup.NumberSchema<number>;
   }>,
   AnyObject,
-  Maybe<TypeOfShape<{ myString: Yup.StringSchema<string, AnyObject, string>; myNumber: Yup.NumberSchema<number, AnyObject, number>; }>[]>
+  Maybe<
+    TypeOfShape<{
+      myString: Yup.StringSchema<string, AnyObject, string>;
+      myNumber: Yup.NumberSchema<number, AnyObject, number>;
+    }>[]
+  >
 >;
 
 const generateValidations = (field: InputProps) => {
-  let schema: YupBoolean | YupString | YupArray= Yup[field.typeValue ? field.typeValue : "string"]();
+  let schema: YupBoolean | YupString | YupArray =
+    Yup[field.typeValue ? field.typeValue : "string"]();
   for (const rule of field.validations) {
     switch (rule.type) {
       case "isTrue":
@@ -33,7 +39,10 @@ const generateValidations = (field: InputProps) => {
         schema = (schema as YupString).email(rule.message);
         break;
       case "minLength":
-        schema = (schema as YupString | YupArray).min(rule?.value as number, rule.message);
+        schema = (schema as YupString | YupArray).min(
+          rule?.value as number,
+          rule.message
+        );
         break;
       case "maxLength":
         schema = (schema as YupString).max(rule.value as number, rule.message);
@@ -53,13 +62,17 @@ const generateValidations = (field: InputProps) => {
   return schema;
 };
 
-export const getInputs = (section: string, form: { [x: string]: InputProps[] }, initialformdata?: DefaultJSON) => {
+export const getInputs = (
+  section: string,
+  form: { [x: string]: InputProps[] },
+  initialformdata?: DefaultJSON
+) => {
   let initialValues: DefaultJSON = {};
 
   const validationsFields: DefaultJSON = {};
 
   for (const field of form[section]) {
-    if(initialformdata) initialValues = initialformdata;
+    if (initialformdata) initialValues = initialformdata;
     else initialValues[field.name] = field.value;
 
     if (!field.validations) continue;
