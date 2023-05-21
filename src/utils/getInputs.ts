@@ -1,7 +1,7 @@
-import * as Yup from 'yup';
-import { AnyObject, Maybe } from 'yup/lib/types';
-import { TypeOfShape } from 'yup/lib/object';
-import { DefaultJSON, InputProps } from '../interfaces/interfaces';
+import * as Yup from "yup";
+import { AnyObject, Maybe } from "yup/lib/types";
+import { TypeOfShape } from "yup/lib/object";
+import { DefaultJSON, InputProps } from "../interfaces/interfaces";
 
 type YupBoolean = Yup.BooleanSchema<
   boolean | undefined,
@@ -72,14 +72,16 @@ export const getInputs = (
   const validationsFields: DefaultJSON = {};
 
   for (const field of form[section]) {
-    if (initialformdata) initialValues = initialformdata;
-    else initialValues[field.name] = field.value;
+    if (!["h1", "h2", "h3", "h4", "h5", "h6"].includes(field.type)) {
+      if (initialformdata) initialValues = initialformdata;
+      else initialValues[field.name] = field.value;
 
-    if (!field.validations) continue;
+      if (!field.validations) continue;
 
-    const schema = generateValidations(field);
+      const schema = generateValidations(field);
 
-    validationsFields[field.name] = schema;
+      validationsFields[field.name] = schema;
+    }
   }
 
   return {
