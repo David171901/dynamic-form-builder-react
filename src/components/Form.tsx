@@ -13,6 +13,7 @@ import { CustomFieldArrays } from './CustomFieldArrays';
 import { CustomTextarea } from './CustomTextarea';
 import { CustomTextInput } from './CustomInput';
 import { CustomLabel } from './CustomLabel';
+import { CustomColorInput } from './CustomColorInput ';
 
 export const Form = () => {
   const {
@@ -27,8 +28,8 @@ export const Form = () => {
     'login',
     formSchema,
     initialformdata
-  );
-
+    );
+    
   return (
     <Layout title={formTitle} className={className}>
       <Formik
@@ -75,6 +76,15 @@ export const Form = () => {
                 case 'checkbox':
                   return (
                     <CustomCheckBox
+                      label={props.label!}
+                      key={name}
+                      name={name}
+                    />
+                  );
+
+                case 'color':
+                  return (
+                    <CustomColorInput
                       label={props.label!}
                       key={name}
                       name={name}

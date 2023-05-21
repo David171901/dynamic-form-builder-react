@@ -10,6 +10,7 @@ export interface InputProps {
     | "h5"
     | "h6"
     | "text"
+    | "color"
     | "textarea"
     | "email"
     | "password"

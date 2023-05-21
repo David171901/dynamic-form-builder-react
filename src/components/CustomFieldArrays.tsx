@@ -1,7 +1,7 @@
 import React from 'react'
-import { Field, ErrorMessage, FieldArray, useField } from "formik";
+import { Field, ErrorMessage, FieldArray } from "formik";
 import { Fields } from "../interfaces/interfaces";
-import styles from '../styles/styles.module.css'
+import styles from "../styles/styles.module.css";
 
 interface Props {
   name: string;
@@ -14,62 +14,103 @@ interface Props {
 export const CustomFieldArrays = ({ label, ...props }: Props) => {
   return (
     <>
-      <label className={styles.field__label}>
-        {label}
-      </label>
-      <FieldArray {...props}>
-        {({ push, remove }) => (
-          <>
-            {props.values[`${props.name}`].map(
-              (_: { [key: string]: any }, index: number) => (
-                <div key={index} className={styles.container__fields_array}>
-                  {props.fields.map((input, indx) => (
-                    <div key={`${props.name}${indx}`} style={{flexGrow: 1}}>
-                      <label>{input.label}</label>
-                      <Field
-                        type="text"
-                        className={styles.field_array__input}
-                        name={`${props.name}[${index}].${input.name}`}
-                        placeholder={`${input.placeholder}`}
-                      />
-                      <ErrorMessage
-                        name={`${props.name}.${index}.${input.name}`}
-                        component="span"
-                      />
-                    </div>
-                  ))}
-                  <div className={styles.container__button_remove}>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (props.values[props.name].length > 1) remove(index)
-                      }}
-                      className={styles.button__remove_field}
-                      disabled={props.values[props.name].length === 1}
+      <div>
+      <label className={styles.field__label}>{label}</label>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {props.fields.map((input, index) => (
+                <th
+                  key={index}
+                  className={styles.th}
+                >
+                  {input.label}
+                </th>
+              ))}
+              <th className={styles.th}>
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <FieldArray {...props}>
+              {({ push, remove }) => (
+                <>
+                  {props.values[`${props.name}`].map(
+                    (_: { [key: string]: any }, index: number) => (
+                      <tr
+                        key={index}
+                        // className={styles.tr}
+                      >
+                        {props.fields.map((input, indx) => (
+                          <td
+                            key={`${props.name}${indx}`}
+                            className={styles.td}
+                          >
+                            <span className={styles.td__span}>
+                              {input.label}
+                            </span>
+                            <Field
+                              type="text"
+                              name={`${props.name}[${index}].${input.name}`}
+                              placeholder={`${input.placeholder}`}
+                              className={styles.field_array__input}
+                            />
+                            <ErrorMessage
+                              name={`${props.name}.${index}.${input.name}`}
+                              component="span"
+                            />
+                          </td>
+                        ))}
+                        <td className={styles.td}>
+                          <span className={styles.td__span}>
+                            Actions
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (props.values[props.name].length > 1)
+                                remove(index);
+                            }}
+                            disabled={props.values[props.name].length === 1}
+                            className={styles.td__button}
+                          >
+                            Remove
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  )}
+                  <tr>
+                    <td
+                      colSpan={props.fields.length + 1}
+                      className={styles.td}
                     >
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              )
-            )}
-            <button
-              className={styles.button__add_field}
-              type="button"
-              onClick={() =>
-                push(
-                  props.fields.reduce((acc: { [key: string]: any }, curr) => {
-                    acc[curr.name] = "";
-                    return acc;
-                  }, {})
-                )
-              }
-            >
-              + Add new fields
-            </button>
-          </>
-        )}
-      </FieldArray>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          push(
+                            props.fields.reduce(
+                              (acc: { [key: string]: any }, curr) => {
+                                acc[curr.name] = "";
+                                return acc;
+                              },
+                              {}
+                            )
+                          )
+                        }
+                        className={styles.td__button}
+                      >
+                        + Add new fields
+                      </button>
+                    </td>
+                  </tr>
+                </>
+              )}
+            </FieldArray>
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
