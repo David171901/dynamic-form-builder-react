@@ -21,6 +21,7 @@ export const CustomCheckBox = (props: Props) => {
               {...field}
               {...props}
               className={styles.checkbox__input}
+              checked={field.value}
             />
             {props.label}
           </label>
