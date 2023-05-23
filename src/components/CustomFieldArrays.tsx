@@ -51,7 +51,7 @@ export const CustomFieldArrays = ({ label, ...props }: Props) => {
                               {input.label}
                             </span>
                             <Field
-                              type="text"
+                              as={`${(input.type === 'text') ? 'input' : 'textarea'}`}
                               name={`${props.name}[${index}].${input.name}`}
                               placeholder={`${input.placeholder}`}
                               className={styles.field_array__input}

@@ -35,7 +35,7 @@ export interface Opt {
 }
 
 export interface Fields {
-  type: "text"
+  type: "text" | "textarea"
   name: string
   label: string
   placeholder?: string
