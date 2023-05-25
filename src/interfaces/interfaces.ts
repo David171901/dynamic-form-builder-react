@@ -10,10 +10,10 @@ export interface InputProps {
     | "h5"
     | "h6"
     | "text"
-    | "color"
-    | "textarea"
     | "email"
     | "password"
+    | "textarea"
+    | "color"
     | "radio-group"
     | "select"
     | "checkbox"
@@ -24,7 +24,7 @@ export interface InputProps {
   value: string | number | boolean | string[] | DefaultJSON[]
   validations?: Validation[]
   placeholder?: string
-  typeValue?: "string" | "boolean" | "array"
+  typeValue?: "string" | "boolean" | "array" | "date"
   label?: string
   options?: Opt[]
   fields?: Fields[]
@@ -51,7 +51,9 @@ export interface Validation {
     | "maxLength"
     | "matches"
     | "isUrl"
-  value?: string | number | boolean | RegExp
+    | "maxDate"
+    | "minDate"
+  value?: string | number | boolean | RegExp | Date
   message: string
 }
 

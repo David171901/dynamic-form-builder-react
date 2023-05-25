@@ -1,5 +1,5 @@
 {
-  "version": "0.1.10",
+  "version": "0.2.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -71,7 +71,6 @@
   },
   "dependencies": {
     "formik": "^2.2.9",
-    "react-datepicker": "^4.11.0",
     "yup": "^0.32.11"
   },
   "repository": {

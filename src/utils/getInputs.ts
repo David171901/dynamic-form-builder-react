@@ -27,8 +27,10 @@ type YupArray = Yup.ArraySchema<
   >
 >;
 
+type YupDate = Yup.DateSchema<Date | undefined, AnyObject, Date | undefined>;
+
 const generateValidations = (field: InputProps) => {
-  let schema: YupBoolean | YupString | YupArray =
+  let schema: YupBoolean | YupString | YupArray | YupDate =
     Yup[field.typeValue ? field.typeValue : "string"]();
   if (field.validations) {
     for (const rule of field.validations) {
@@ -59,6 +61,18 @@ const generateValidations = (field: InputProps) => {
             rule.value as RegExp,
             rule.message
           );
+          break;
+        case "maxDate":
+          schema = (schema as YupDate).max(
+            rule.value as RegExp,
+            rule.message
+          );
+          break;
+        case "minDate":
+            schema = (schema as YupDate).min(
+              rule.value as RegExp,
+              rule.message
+            );
           break;
         default:
           schema = schema.required(rule.message);

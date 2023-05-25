@@ -14,7 +14,7 @@ import { CustomTextarea } from './CustomTextarea';
 import { CustomTextInput } from './CustomInput';
 import { CustomLabel } from './CustomLabel';
 import { CustomColorInput } from './CustomColorInput ';
-import { CustomDatePicker } from './CustomDatePicker';
+import { CustomDatePicker } from './CustomDateInput';
 
 export const Form = () => {
   const {
@@ -29,7 +29,7 @@ export const Form = () => {
     'login',
     formSchema,
     initialformdata
-  );
+    );
 
   return (
     <Layout title={formTitle} className={className}>
