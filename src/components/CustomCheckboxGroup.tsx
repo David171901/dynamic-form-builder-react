@@ -1,6 +1,6 @@
-import React from 'react'
-import { ErrorMessage, Field, useField } from "formik"
-import styles from '../styles/styles.module.css'
+import React from 'react';
+import { ErrorMessage, Field, useField } from 'formik';
+import styles from '../styles/styles.module.css';
 
 type Opt = { value: string | number; desc: string };
 
@@ -17,19 +17,17 @@ export const CustomCheckboxGroup = ({ label, options, ...props }: Props) => {
   return (
     <>
       <div>
-        <label className={styles.field__label}>
-          {label}
-        </label>
-        {options.map((opt) => (
-          <div className={styles.container__checkbox} key={opt.value}>
-            <label className={styles.checkbox__label}>
+        <label className={styles.label_field}>{label}</label>
+        {options.map(opt => (
+          <div className={styles.checkbox_container} key={opt.value}>
+            <label className={styles.checkbox_label}>
               <Field
                 {...field}
                 {...props}
                 type="checkbox"
                 name={props.name}
                 value={opt.value}
-                className={styles.checkbox__input}
+                className={styles.checkbox_input}
               />
               {opt.desc}
             </label>
@@ -38,7 +36,7 @@ export const CustomCheckboxGroup = ({ label, options, ...props }: Props) => {
         <ErrorMessage
           name={props.name}
           component="span"
-          className={styles.field__error}
+          className={styles.error_field}
         />
       </div>
     </>

@@ -1,6 +1,6 @@
-import React from 'react'
-import { useField } from "formik";
-import styles from '../styles/styles.module.css'
+import React from 'react';
+import { useField } from 'formik';
+import styles from '../styles/styles.module.css';
 
 interface Props {
   name: string;
@@ -13,8 +13,13 @@ export const CustomColorInput = ({ label, ...props }: Props) => {
 
   return (
     <div>
-      <label className={styles.field__label}>{label}</label>
-      <input  className={styles.color} {...field} {...props} type="color" />
+      <label className={styles.label_field}>{label}</label>
+      <input
+        className={styles.color_select}
+        {...field}
+        {...props}
+        type="color"
+      />
     </div>
   );
 };

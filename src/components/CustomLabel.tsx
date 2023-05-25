@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from "../styles/styles.module.css";
+import React from 'react';
+import styles from '../styles/styles.module.css';
 
 interface Props {
   name: string;
@@ -12,22 +12,22 @@ interface Props {
 export const CustomLabel = ({ label, type }: Props) => {
   let size;
   switch (type) {
-    case "h1":
+    case 'h1':
       size = 2.125;
       break;
-    case "h2":
+    case 'h2':
       size = 1.875;
       break;
-    case "h3":
+    case 'h3':
       size = 1.5;
       break;
-    case "h4":
+    case 'h4':
       size = 1.25;
       break;
-    case "h5":
+    case 'h5':
       size = 1.125;
       break;
-    case "h6":
+    case 'h6':
       size = 1;
       break;
     default:
@@ -38,7 +38,10 @@ export const CustomLabel = ({ label, type }: Props) => {
   return (
     <>
       <div>
-        <label className={styles.field__label} style={{ fontSize: `${size}rem` }}>
+        <label
+          className={styles.label_field}
+          style={{ fontSize: `${size}rem` }}
+        >
           {label}
         </label>
       </div>

@@ -1,6 +1,6 @@
-import React from 'react'
-import { ErrorMessage, useField } from "formik"
-import styles from '../styles/styles.module.css'
+import React from 'react';
+import { ErrorMessage, useField } from 'formik';
+import styles from '../styles/styles.module.css';
 
 interface Props {
   label: string;
@@ -14,13 +14,13 @@ export const CustomCheckBox = (props: Props) => {
   return (
     <>
       <div>
-        <div className={styles.container__checkbox}>
-          <label className={styles.checkbox__label}>
+        <div className={styles.checkbox_container}>
+          <label className={styles.checkbox_label}>
             <input
               type="checkbox"
               {...field}
               {...props}
-              className={styles.checkbox__input}
+              className={styles.checkbox_input}
               checked={field.value}
             />
             {props.label}
@@ -30,7 +30,7 @@ export const CustomCheckBox = (props: Props) => {
         <ErrorMessage
           name={props.name}
           component="span"
-          className={styles.field__error}
+          className={styles.error_field}
         />
       </div>
     </>

@@ -1,11 +1,11 @@
-import React from 'react'
-import { createContext, useState } from "react"
+import React from 'react';
+import { createContext, useState } from 'react';
 import {
   DefaultJSON,
   FormContextProps,
   FormHandlers,
   InputProps,
-} from "../interfaces/interfaces";
+} from '../interfaces/interfaces';
 
 export const FormContext = createContext({} as FormContextProps);
 const { Provider } = FormContext;

@@ -15,12 +15,12 @@ exports[`DynamicFormContainer Component 1`] = `
   >
     <div>
       <label
-        className="field__label"
+        className="label_field"
       >
         Full Name
       </label>
       <input
-        className="field__input"
+        className="input_field"
         name="name"
         onBlur={[Function]}
         onChange={[Function]}
@@ -31,12 +31,12 @@ exports[`DynamicFormContainer Component 1`] = `
     </div>
     <div>
       <label
-        className="field__label"
+        className="label_field"
       >
         E-mail
       </label>
       <input
-        className="field__input"
+        className="input_field"
         name="email"
         onBlur={[Function]}
         onChange={[Function]}
@@ -47,12 +47,12 @@ exports[`DynamicFormContainer Component 1`] = `
     </div>
     <div>
       <label
-        className="field__label"
+        className="label_field"
       >
         Password
       </label>
       <input
-        className="field__input"
+        className="input_field"
         name="password"
         onBlur={[Function]}
         onChange={[Function]}
@@ -62,7 +62,7 @@ exports[`DynamicFormContainer Component 1`] = `
       />
     </div>
     <button
-      className="button__send"
+      className="send_button"
       style={
         Object {
           "background": "#2980B9",

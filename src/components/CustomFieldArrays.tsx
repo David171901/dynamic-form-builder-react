@@ -1,7 +1,7 @@
-import React from 'react'
-import { Field, ErrorMessage, FieldArray } from "formik";
-import { Fields } from "../interfaces/interfaces";
-import styles from "../styles/styles.module.css";
+import React from 'react';
+import { Field, ErrorMessage, FieldArray } from 'formik';
+import { Fields } from '../interfaces/interfaces';
+import styles from '../styles/styles.module.css';
 
 interface Props {
   name: string;
@@ -15,21 +15,16 @@ export const CustomFieldArrays = ({ label, ...props }: Props) => {
   return (
     <>
       <div>
-      <label className={styles.field__label}>{label}</label>
-        <table className={styles.table}>
+        <label className={styles.label_field}>{label}</label>
+        <table className={styles.data_table}>
           <thead>
             <tr>
               {props.fields.map((input, index) => (
-                <th
-                  key={index}
-                  className={styles.th}
-                >
+                <th key={index} className={styles.table_header}>
                   {input.label}
                 </th>
               ))}
-              <th className={styles.th}>
-                Actions
-              </th>
+              <th className={styles.table_header}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -40,21 +35,23 @@ export const CustomFieldArrays = ({ label, ...props }: Props) => {
                     (_: { [key: string]: any }, index: number) => (
                       <tr
                         key={index}
-                        // className={styles.tr}
+                        // className={styles.table_row}
                       >
                         {props.fields.map((input, indx) => (
                           <td
                             key={`${props.name}${indx}`}
-                            className={styles.td}
+                            className={styles.table_cell}
                           >
-                            <span className={styles.td__span}>
+                            <span className={styles.cell_span}>
                               {input.label}
                             </span>
                             <Field
-                              as={`${(input.type === 'text') ? 'input' : 'textarea'}`}
+                              as={`${
+                                input.type === 'text' ? 'input' : 'textarea'
+                              }`}
                               name={`${props.name}[${index}].${input.name}`}
                               placeholder={`${input.placeholder}`}
-                              className={styles.field_array__input}
+                              className={styles.field_array_input}
                             />
                             <ErrorMessage
                               name={`${props.name}.${index}.${input.name}`}
@@ -62,10 +59,8 @@ export const CustomFieldArrays = ({ label, ...props }: Props) => {
                             />
                           </td>
                         ))}
-                        <td className={styles.td}>
-                          <span className={styles.td__span}>
-                            Actions
-                          </span>
+                        <td className={styles.table_cell}>
+                          <span className={styles.cell_span}>Actions</span>
                           <button
                             type="button"
                             onClick={() => {
@@ -73,7 +68,7 @@ export const CustomFieldArrays = ({ label, ...props }: Props) => {
                                 remove(index);
                             }}
                             disabled={props.values[props.name].length === 1}
-                            className={styles.td__button}
+                            className={styles.cell_button}
                           >
                             Remove
                           </button>
@@ -84,7 +79,7 @@ export const CustomFieldArrays = ({ label, ...props }: Props) => {
                   <tr>
                     <td
                       colSpan={props.fields.length + 1}
-                      className={styles.td}
+                      className={styles.table_cell}
                     >
                       <button
                         type="button"
@@ -92,14 +87,14 @@ export const CustomFieldArrays = ({ label, ...props }: Props) => {
                           push(
                             props.fields.reduce(
                               (acc: { [key: string]: any }, curr) => {
-                                acc[curr.name] = "";
+                                acc[curr.name] = '';
                                 return acc;
                               },
                               {}
                             )
                           )
                         }
-                        className={styles.td__button}
+                        className={styles.cell_button}
                       >
                         + Add new fields
                       </button>
